@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import RuSlideVerify from "@ru-captcha-v3/slideverify"
+import RuCaptcha from "ru-captcha-v3"
 
 const app = createApp(App)
-app.use(RuSlideVerify)
+app.use(RuCaptcha)
 app.mount("#app")

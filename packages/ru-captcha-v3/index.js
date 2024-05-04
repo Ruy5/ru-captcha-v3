@@ -1,7 +1,7 @@
-import SlideVerify from "@ru-captcha-v3/SlideVerify"
+import RuSlideVerify from "@ru-captcha-v3/slideverify/src/RuSlideVerify.vue"
 
 const components = [
-    SlideVerify
+    RuSlideVerify
 ]
 
 export default  {

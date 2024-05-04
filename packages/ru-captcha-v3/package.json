@@ -5,13 +5,10 @@
   "author": "RU <ru@feli.top>",
   "homepage": "https://github.com/Ruy5/captcha-v3#readme",
   "license": "ISC",
-  "main": "lib/ru-captcha-v3.js",
+  "main": "index.js",
   "directories": {
-    "lib": "lib",
-    "test": "__tests__"
   },
   "files": [
-    "lib"
   ],
   "publishConfig": {
     "registry": "https://registry.npmmirror.com/"
