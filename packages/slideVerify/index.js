@@ -1,11 +1,7 @@
-import SlideVerify from "./src/slideVerify.vue";
-
-SlideVerify.install = (app) => {
-    app.component('RuSlideVerify', SlideVerify);
-}
+import RuSlideVerify from "./src/RuSlideVerify.vue";
 
 export default  {
     install: (app) => {
-        app.component('RuSlideVerify', SlideVerify);
+        app.component(RuSlideVerify.__name, RuSlideVerify);
     }
 }

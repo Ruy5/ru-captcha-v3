@@ -4,12 +4,10 @@ const components = [
     SlideVerify
 ]
 
-const install = (app) => {
-    components.forEach(component => {
-        app.component(component.name, component)
-    });
-}
-
-export default {
-    install
+export default  {
+    install: (app) => {
+        components.forEach(component => {
+            app.component(component.__name, component)
+        });
+    }
 }
