@@ -4,4 +4,8 @@ SlideVerify.install = (app) => {
     app.component('RuSlideVerify', SlideVerify);
 }
 
-export default SlideVerify;
+export default  {
+    install: (app) => {
+        app.component('RuSlideVerify', SlideVerify);
+    }
+}

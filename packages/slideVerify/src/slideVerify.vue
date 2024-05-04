@@ -6,5 +6,4 @@
 const c = () => {
   console.log('dark')
 }
-
 </script>

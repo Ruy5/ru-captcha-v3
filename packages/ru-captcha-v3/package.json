@@ -1,17 +1,17 @@
 {
-  "name": "@ru-captcha-v3/slideverify",
+  "name": "ru-captcha-v3",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "RU <ru@feli.top>",
   "homepage": "https://github.com/Ruy5/captcha-v3#readme",
   "license": "ISC",
-  "main": "./index.js",
+  "main": "lib/ru-captcha-v3.js",
   "directories": {
-    "src": "src",
+    "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "src"
+    "lib"
   ],
   "publishConfig": {
     "registry": "https://registry.npmmirror.com/"
@@ -21,7 +21,7 @@
     "url": "git+https://github.com/Ruy5/captcha-v3.git"
   },
   "scripts": {
-    "test": "node ./__tests__/slideVerify.test.js"
+    "test": "node ./__tests__/ru-captcha-v3.test.js"
   },
   "bugs": {
     "url": "https://github.com/Ruy5/captcha-v3/issues"
