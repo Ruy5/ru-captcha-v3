@@ -7,7 +7,8 @@ const components = [
 export default  {
     install: (app) => {
         components.forEach(component => {
-            app.component(component.__name, component)
+            console.log(component)
+            app.component(component.name, component)
         });
     }
 }
