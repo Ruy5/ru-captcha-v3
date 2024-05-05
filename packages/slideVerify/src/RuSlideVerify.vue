@@ -19,6 +19,7 @@
       }"
       ></div>
   </div> 
+  <!-- {{ configOption }} -->
 </template>
 
 <script setup>
@@ -52,26 +53,83 @@ const dragHandler = ref(null)
 const configOption = reactive({
   dragText: "",
   bgImg: '',
-  dragOffset: 10
+  dragOffset: 0,
+  clientX: 0,
+  down: false,
+  pass: false
 })
 
 const initDrag = () => {
   // maxHandleOffset.value = dragContainer.value.clientWidth - dragHandler.value.clientWidth
   configOption.dragText = "向右拖动"
-  configOption.bgImg = props.succBgImg
+  configOption.bgImg = props.defBgImg
+  configOption.pass = false
+  configOption.dragOffset = 0
 }
 
+// 按下
 const onDragHandlerMouseDown = (e) => {
-
+  if(configOption.pass) {
+    return
+  }
+  configOption.dragOffset = 0
+  configOption.clientX = e.clientX
+  configOption.down = true
 }
 
-const onDragHandlerMouseMove = (e) => {
+// 拖动
+const onDragHandlerMouseMove = (e) => { 
+  if(! configOption.down) {
+    return
+  }
 
+  // 获取鼠标当前位置距离浏览器窗口左侧的距离
+  const currentX = e.clientX
+  // 计算鼠标当前位置相对于滑动容器左侧的距离
+  const offset = (currentX - configOption.clientX) + configOption.dragOffset
+  configOption.clientX = currentX
+  // 确保滑块不超出容器范围
+  if(offset > 0 && dragHandler.value.clientWidth + offset <= dragContainer.value.clientWidth) {
+    configOption.dragOffset = offset
+  }
+  if(dragHandler.value.clientWidth + offset >= dragContainer.value.clientWidth) {
+    onDragHandlerMouseUp()
+  }
+
+  // const containerRect = dragContainer.value.getBoundingClientRect()
+
+  // console.log(`${containerRect.left} - ${containerRect.right} - ${containerRect.top} -${containerRect.bottom}`)
+  // console.log(`${e.clientX} - ${e.clientX} - ${e.clientY} -${e.clientY}`)
+  // // 检查鼠标是否超出容器的边界
+  // if (
+  //   e.clientX <= containerRect.left + 1  ||
+  //   e.clientX >= containerRect.right - 1 ||
+  //   e.clientY <= containerRect.top + 1 ||
+  //   e.clientY >= containerRect.bottom - 1
+  // ) {
+  //   // 鼠标超出容器边界，执行相应操作
+  //   onDragHandlerMouseUp()
+  // }
 }
 
+// 抬起
 const onDragHandlerMouseUp = () => {
-  console.log("抬起了")
+  // 在这里可以进行验证逻辑，判断是否验证成功
+  // 验证成功：修改相关样式和文本提示
+  // 验证失败：回到初始状态
+  console.log(configOption.dragOffset , dragContainer.value.clientWidth - dragHandler.value.clientWidth)
+  if (configOption.dragOffset >= dragContainer.value.clientWidth - dragHandler.value.clientWidth) {
+    configOption.dragText = "验证通过"
+    configOption.bgImg = props.succBgImg
+    configOption.pass = true
+  } else {
+    configOption.dragText = "向右拖动"
+    configOption.bgImg = props.defBgImg
+    configOption.dragOffset = 0
+  }
+  configOption.down = false
 }
+
 
 onMounted(() => {
   initDrag()

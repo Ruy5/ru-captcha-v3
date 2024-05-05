@@ -1,5 +1,4 @@
 <template>
-    123
     <RuSlideVerify ></RuSlideVerify>
 </template>
 
